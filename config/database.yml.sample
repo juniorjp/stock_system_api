@@ -1,0 +1,18 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  host: localhost
+  database: stock_system
+  pool: 5
+  username: fractal
+  password: 123456
+
+development:
+  <<: *default
+
+test:
+  <<: *default
+  database: stock_system-test
+
+production:
+  <<: *default
