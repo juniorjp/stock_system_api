@@ -10,6 +10,8 @@ end
 gem 'rails', '~> 5.0.2'
 # Use PostgreSQL as the database for Active Record
 gem 'pg'
+# Use Elasticsearch as the secondary persistance layer for search
+gem 'chewy'
 # Use Puma as the app server
 gem 'puma', '~> 3.0'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
