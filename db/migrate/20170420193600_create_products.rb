@@ -8,10 +8,12 @@ class CreateProducts < ActiveRecord::Migration[5.0]
       t.text :ps
       t.boolean :hidden, default: false
       t.integer :provider_id, default: 0, nil: false
+      t.integer :brand_id, default: 0, nil: false
       t.timestamps
     end
     add_index :products, :name
     add_index :products, :code
     add_index :products, :provider_id
+    add_index :products, :brand_id
   end
 end
