@@ -18,4 +18,9 @@ RSpec.describe Product, type: :model do
     product.quantity = 27
     expect(product).to be_valid
   end
+
+  it 'may have many categories' do
+    t = Product.reflect_on_association(:categories)
+    t.macro.should == :has_many
+  end
 end

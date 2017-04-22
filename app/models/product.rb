@@ -4,5 +4,6 @@ class Product < ApplicationRecord
   validates :price, presence: true, numericality: true
   validates :quantity, presence: true, numericality: { only_integer: true, greater_than: 0 }
 
+  has_many :categories_products
   has_many :categories, through: :categories_products, class_name: 'CategoryProduct'
 end
