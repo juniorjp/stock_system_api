@@ -8,6 +8,8 @@ end
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.0.2'
+gem 'sidekiq'
+
 # Use PostgreSQL as the database for Active Record
 gem 'pg'
 # Use Elasticsearch as the secondary persistance layer for search
