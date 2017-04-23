@@ -32,8 +32,9 @@ Make sure you have these softwares in your machine:
               rspec
 
              
-7. Check the api documentation:[here](/doc/api/index.markdown)
+## Documentation
+ Check the api documentation:[here](/doc/api/index.markdown)
              
-7. Enjoy :)              
+Enjoy :)              
               
               
