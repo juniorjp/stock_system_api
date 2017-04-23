@@ -8,8 +8,12 @@ end
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.0.2'
+gem 'sidekiq'
+
 # Use PostgreSQL as the database for Active Record
 gem 'pg'
+# Use Elasticsearch as the secondary persistance layer for search
+gem 'chewy'
 # Use Puma as the app server
 gem 'puma', '~> 3.0'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
@@ -48,3 +52,4 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'rack-cors'
 gem 'active_model_serializers'
 gem 'will_paginate', '~> 3.1.0'
+gem 'foreman'

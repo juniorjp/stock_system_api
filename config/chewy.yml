@@ -1,0 +1,11 @@
+default: &default
+  host: 'localhost:9200'
+test:
+  <<: *default
+  prefix: 'stock_system_test'
+development:
+  <<: *default
+  prefix: 'stock_system'
+production:
+  <<: *default
+  prefix: 'stock_system'

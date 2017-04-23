@@ -1,0 +1,1 @@
+Chewy.request_strategy = :sidekiq
