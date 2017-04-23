@@ -5,6 +5,7 @@ require File.expand_path('../../config/environment', __FILE__)
 abort("The Rails environment is running in production mode!") if Rails.env.production?
 require 'spec_helper'
 require 'rspec/rails'
+require 'chewy/rspec'
 # Add additional requires below this line. Rails is not loaded until this point!
 
 # Requires supporting ruby files with custom matchers and macros, etc, in
@@ -56,8 +57,10 @@ RSpec.configure do |config|
   # config.filter_gems_from_backtrace("gem name")
   DatabaseCleaner.clean_with(:truncation)
 
+  Chewy.root_strategy = :urgent
   config.before(:suite) do
     FactoryGirl.lint
+    Chewy.massacre
   end
 end
 
