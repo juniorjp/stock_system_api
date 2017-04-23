@@ -60,8 +60,12 @@ RSpec.configure do |config|
   Chewy.root_strategy = :urgent
   config.before(:suite) do
     FactoryGirl.lint
+  end
+
+  config.after(:suite) do
     Chewy.massacre
   end
+
 end
 
 Shoulda::Matchers.configure do |config|
