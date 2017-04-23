@@ -20,5 +20,7 @@ class ProductsIndex < Chewy::Index
     field :name, analyzer: 'autocomplete'
     field :id, :code, index: :not_analyzed
     field :ps
+    field :price
+    field :quantity
   end
 end
