@@ -19,5 +19,6 @@ class ProductsIndex < Chewy::Index
   define_type Product do
     field :name, analyzer: 'autocomplete'
     field :id, :code, index: :not_analyzed
+    field :ps
   end
 end
