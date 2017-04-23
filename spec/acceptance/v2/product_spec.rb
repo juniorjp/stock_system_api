@@ -62,7 +62,21 @@ resource 'Product' do
     let(:raw_post) { {page: 1, per_page: 1}.to_json }
     example_request 'List products' do
       parsed_response = JSON.parse(response_body)
-      expect(parsed_response['products'].length).to eq(1)
+      expect(parsed_response.length).to eq(1)
+      expect(status).to eq(200)
+    end
+  end
+
+  post '/v2/products/search' do
+    FactoryGirl.create(:product, name: 'Gold Chess')
+    let(:raw_post) { {search_term: 'che'}.to_json }
+    example_request 'Search product by a specific term' do
+      parsed_response = JSON.parse(response_body)
+      expect(parsed_response.length).to eq(1)
+      puts parsed_response
+      product = parsed_response[0]
+      expect(product).not_to be_empty
+      expect(product['name']).to eq('Gold Chess')
       expect(status).to eq(200)
     end
   end
