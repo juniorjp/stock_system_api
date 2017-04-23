@@ -3,8 +3,9 @@ class V2::ProductsController < ApplicationController
   before_action :set_product, only: [:show, :edit, :update, :destroy]
 
   def index
-    @products = Product.paginate(page: params[:page], per_page: params[:per_page])
-    render json: @products, each_serializer: V2::ProductSerializer, meta: {count: @products.count(:all) }
+    @products = ProductsIndex::Product.offset(params[:page] *  params[:per_page]).limit(params[:per_page])
+    @products = @products.to_a
+    render json: @products
   end
 
   def create
