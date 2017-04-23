@@ -3,9 +3,12 @@ class V2::ProductsController < ApplicationController
   before_action :set_product, only: [:show, :edit, :update, :destroy]
 
   def index
-    @products = ProductsIndex::Product.offset(params[:page] *  params[:per_page]).limit(params[:per_page])
-    @products = @products.to_a
-    render json: @products
+    page = params[:page] || 0
+    per_page = params[:per_page] || 10
+    query_service = ElasticsearchQueryService.new
+    @products = query_service.paginate_query(ProductsIndex.all, page, per_page)
+    @products = query_service.search_term(@products, params[:search_term])
+    render json: @products.to_a, each_serializer: V2::ProductSerializer, root: false
   end
 
   def create
