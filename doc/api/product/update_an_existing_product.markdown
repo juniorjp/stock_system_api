@@ -1,6 +1,6 @@
 # Product API
 
-## Updates an existing product
+## Update an existing product
 
 ### PUT /v2/products/:id
 
@@ -48,8 +48,8 @@ X-Content-Type-Options: nosniff
 Content-Type: application/json; charset=utf-8
 ETag: W/&quot;45cd0a095e891977104ae9fe759a2ae6&quot;
 Cache-Control: max-age=0, private, must-revalidate
-X-Request-Id: 190109f9-4703-4aeb-9b23-9e777f924eb3
-X-Runtime: 0.016548
+X-Request-Id: 30f4924e-c460-445e-8b85-003971174319
+X-Runtime: 0.025044
 Vary: Origin
 Content-Length: 82</pre>
 

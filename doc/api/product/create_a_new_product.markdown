@@ -1,6 +1,6 @@
 # Product API
 
-## Creates a new product
+## Create a new product
 
 ### POST /v2/products
 
@@ -47,8 +47,8 @@ X-Content-Type-Options: nosniff
 Content-Type: application/json; charset=utf-8
 ETag: W/&quot;b37361f97441dfcf6b5a23840c58a9ae&quot;
 Cache-Control: max-age=0, private, must-revalidate
-X-Request-Id: a43f6dcd-f6ce-469f-909b-d605770062b1
-X-Runtime: 0.030844
+X-Request-Id: 2becb10d-1b2f-4d15-82cb-0dc78b129c0d
+X-Runtime: 0.134941
 Vary: Origin
 Content-Length: 79</pre>
 

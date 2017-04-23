@@ -1,8 +1,8 @@
 # Product API
 
-## Gets a product from the api using the product id.
+## Remove a product from the api using the product id.
 
-### GET /v2/products/:id
+### DELETE /v2/products/:id
 
 ### Parameters
 
@@ -21,11 +21,11 @@ Cookie: </pre>
 
 #### Route
 
-<pre>GET /v2/products/4</pre>
+<pre>DELETE /v2/products/5</pre>
 
 #### cURL
 
-<pre class="request">curl &quot;http://localhost:3000/v2/products/4&quot; -X GET \
+<pre class="request">curl &quot;http://localhost:3000/v2/products/5&quot; -d &#39;&#39; -X DELETE \
 	-H &quot;Accept: application/json&quot; \
 	-H &quot;Content-Type: application/json&quot;</pre>
 
@@ -37,10 +37,10 @@ Cookie: </pre>
 X-XSS-Protection: 1; mode=block
 X-Content-Type-Options: nosniff
 Content-Type: application/json; charset=utf-8
-ETag: W/&quot;218e738a76f4bbaa23562f4b66bb1978&quot;
+ETag: W/&quot;15b3f84cf56ab687a3f8907a7af63841&quot;
 Cache-Control: max-age=0, private, must-revalidate
-X-Request-Id: a857de24-7990-4773-ad81-b598a0dd39aa
-X-Runtime: 0.002539
+X-Request-Id: 16e2193c-f306-40e6-bdd6-17e6e166a02c
+X-Runtime: 0.004058
 Vary: Origin
 Content-Length: 66</pre>
 
@@ -52,7 +52,7 @@ Content-Length: 66</pre>
 
 <pre>[
   {
-    "id": 4,
+    "id": 5,
     "name": "Herbalife",
     "code": "1",
     "price": 25.7,

@@ -13,7 +13,7 @@ resource 'Product' do
     quantity = 25
     price = 70.1
     let(:raw_post) {  {product: {code: code, name: name, quantity: quantity, price: price, }}.to_json }
-    example_request 'Creates a new product' do
+    example_request 'Create a new product' do
       explanation 'First, it creates a product, then it returns a response with the product registered data'
       parsed_response = JSON.parse(response_body)
       expect(parsed_response.size).to eq(1)
@@ -41,7 +41,7 @@ resource 'Product' do
     price = 59.1
     let(:id) { product.id }
     let(:raw_post) {  {product: {code: code, name: name, quantity: quantity, price: price, }}.to_json }
-    example_request 'Updates an existing product' do
+    example_request 'Update an existing product' do
       explanation 'First, updates chosen product fields, then returns a response with the product updated data'
       parsed_response = JSON.parse(response_body)
       expect(parsed_response.size).to eq(1)
@@ -84,7 +84,7 @@ resource 'Product' do
     product = FactoryGirl.create(:product)
     parameter :id, 'Product Id', required: true
     let(:id) { product.id }
-    example_request 'Gets a product from the api using the product id.' do
+    example_request 'Get a product from the api using the product id.' do
       parsed_response = JSON.parse(response_body)
       expect(parsed_response).not_to be_empty
       expect(parsed_response.size).to eq(1)
@@ -99,7 +99,7 @@ resource 'Product' do
     product = FactoryGirl.create(:product)
     parameter :id, 'Product Id', required: true
     let(:id) { product.id }
-    example_request 'Removes a product from the api using the product id.' do
+    example_request 'Remove a product from the api using the product id.' do
       parsed_response = JSON.parse(response_body)
       expect(parsed_response).not_to be_empty
       expect(parsed_response.size).to eq(1)
