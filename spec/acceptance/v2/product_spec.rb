@@ -73,7 +73,6 @@ resource 'Product' do
     example_request 'Search product by a specific term' do
       parsed_response = JSON.parse(response_body)
       expect(parsed_response.length).to eq(1)
-      puts parsed_response
       product = parsed_response[0]
       expect(product).not_to be_empty
       expect(product['name']).to eq('Gold Chess')
