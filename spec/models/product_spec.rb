@@ -23,4 +23,9 @@ RSpec.describe Product, type: :model do
     t = Product.reflect_on_association(:categories)
     t.macro.should == :has_many
   end
+
+  it 'update elasticsearch index after save' do
+    product  = FactoryGirl.build(:product)
+    expect { product.save! }.to update_index('products#product')
+  end
 end
