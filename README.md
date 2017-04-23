@@ -1,24 +1,39 @@
-# README
+## Requirements
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Make sure you have these softwares in your machine:
 
-Things you may want to cover:
+* Ruby (2.3.3)
+* Elasticsearch (2.4.2 or greater)
+* PostgreSQL (9.3 or greater)
+* Redis (2.8 or greater)
 
-* Ruby version
+## Running the app
 
-* System dependencies
+1. Clone the application repository
 
-* Configuration
+2. Bundle the dependencies. In the app folder:
 
-* Database creation
+        bundle install
+              
+3. Config your database.yml
+              
+              sudo cp config/database.yml.sample config/database.yml
 
-* Database initialization
+4. Create the database:
+              
+              rails db:setup
+              
+5. Run the app
+              
+              foreman start
+              
+6. Run the tests:
+              
+              rspec
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+             
+7. Check the api documentation:[here](/doc/api/index.markdown)
+             
+7. Enjoy :)              
+              
+              
