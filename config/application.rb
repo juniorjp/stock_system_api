@@ -33,5 +33,7 @@ module StockSystem
         resource '*', :headers => :any, :methods =>  [:get, :post, :delete, :put, :options, :head]
       end
     end
+    config.middleware.use Rack::Attack
   end
+
 end
