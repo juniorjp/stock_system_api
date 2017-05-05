@@ -32,6 +32,7 @@ group :development, :test do
   gem 'database_cleaner'
   gem 'factory_girl'
   gem 'factory_girl_rails'
+  gem 'shoulda-matchers', '~> 3.1'
 end
 
 group :development do
