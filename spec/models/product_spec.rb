@@ -13,9 +13,9 @@ RSpec.describe Product, type: :model do
 
   #business validation
   it 'must have a positive price' do
-    product  = FactoryGirl.build(:product, price: 0)
+    product  = FactoryGirl.build(:product, quantity: 0)
     expect(product).to_not be_valid
-    product.price = 27
+    product.quantity = 27
     expect(product).to be_valid
   end
 end
