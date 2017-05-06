@@ -1,7 +1,7 @@
 class V2::ProductsController < ApplicationController
 
   def index
-    @products = Product.all
+    @products = Product.paginate(page: params[:page], per_page: params[:per_page])
     render json: @products, each_serializer: V2::ProductSerializer, meta: {count: @products.count(:all) }
   end
 
