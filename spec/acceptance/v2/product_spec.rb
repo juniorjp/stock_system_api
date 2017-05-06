@@ -30,7 +30,7 @@ resource 'Product' do
   end
 
   put '/v2/products/:id' do
-    parameter :id, 'Product Id', required: true, scope: :product
+    parameter :id, 'Product Id', required: true
     parameter :name, 'Product Name', required: true, scope: :product
     parameter :quantity, 'Quantity', required: true, scope: :product
     parameter :price, 'Price', required: true, scope: :product
@@ -68,10 +68,25 @@ resource 'Product' do
   end
 
   get '/v2/products/:id' do
-    FactoryGirl.create(:product)
-    parameter :id, 'Product Id', required: true, scope: :product
-    let(:id) { Product.last.id }
+    product = FactoryGirl.create(:product)
+    parameter :id, 'Product Id', required: true
+    let(:id) { product.id }
     example_request 'Gets a product from the api using the product id.' do
+      parsed_response = JSON.parse(response_body)
+      expect(parsed_response).not_to be_empty
+      expect(parsed_response.size).to eq(1)
+      product = parsed_response[0]
+      expect(product).not_to be_empty
+      expect(product['name']).not_to be_empty
+      expect(status).to eq(200)
+    end
+  end
+
+  delete '/v2/products/:id' do
+    product = FactoryGirl.create(:product)
+    parameter :id, 'Product Id', required: true
+    let(:id) { product.id }
+    example_request 'Removes a product from the api using the product id.' do
       parsed_response = JSON.parse(response_body)
       expect(parsed_response).not_to be_empty
       expect(parsed_response.size).to eq(1)
