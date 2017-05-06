@@ -16,7 +16,6 @@ resource 'Product' do
     example_request 'Create a new product' do
       explanation 'First, create a product, then returns a response with the product registered data'
       product = JSON.parse(response_body)
-      puts product
       expect(product).to include({
          'name' => name,
          'code' => code,
@@ -35,6 +34,21 @@ resource 'Product' do
     example_request 'List products' do
       parsed_response = JSON.parse(response_body)
       expect(parsed_response['products'].length).to eq(1)
+      expect(status).to eq(200)
+    end
+  end
+
+  get '/v2/products/:id' do
+    FactoryGirl.create(:product)
+    parameter :id, 'Product Id', required: true, scope: :product
+    let(:id) { Product.last.id }
+    example_request 'Gets a product from the api using the product id.' do
+      parsed_response = JSON.parse(response_body)
+      expect(parsed_response).not_to be_empty
+      expect(parsed_response.size).to eq(1)
+      product = parsed_response[0]
+      expect(product).not_to be_empty
+      expect(product['name']).not_to be_empty
       expect(status).to eq(200)
     end
   end
