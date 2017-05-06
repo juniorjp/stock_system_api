@@ -11,7 +11,7 @@ class V2::ProductsController < ApplicationController
     product = Product.new()
     product.assign_attributes product_params
     if product.save
-      render json: product, serializer: V2::ProductSerializer, root: nil
+      render json: [product], each_serializer: V2::ProductSerializer, root: false
     else
       render json: { error: 'Could not create product, try again later', details: product.errors.full_messages }, status: :unprocessable_entity
     end

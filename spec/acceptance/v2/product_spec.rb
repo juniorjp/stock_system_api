@@ -15,7 +15,9 @@ resource 'Product' do
     let(:raw_post) {  {product: {code: code, name: name, quantity: quantity, price: price, }}.to_json }
     example_request 'Create a new product' do
       explanation 'First, create a product, then returns a response with the product registered data'
-      product = JSON.parse(response_body)
+      parsed_response = JSON.parse(response_body)
+      expect(parsed_response.size).to eq(1)
+      product = parsed_response[0]
       expect(product).to include({
          'name' => name,
          'code' => code,
