@@ -13,8 +13,8 @@ resource 'Product' do
     quantity = 25
     price = 70.1
     let(:raw_post) {  {product: {code: code, name: name, quantity: quantity, price: price, }}.to_json }
-    example_request 'Create a new product' do
-      explanation 'First, create a product, then returns a response with the product registered data'
+    example_request 'Creates a new product' do
+      explanation 'First, it creates a product, then it returns a response with the product registered data'
       parsed_response = JSON.parse(response_body)
       expect(parsed_response.size).to eq(1)
       product = parsed_response[0]
@@ -27,7 +27,34 @@ resource 'Product' do
       })
       expect(status).to eq(200)
     end
-    DatabaseCleaner.clean
+  end
+
+  put '/v2/products/:id' do
+    parameter :id, 'Product Id', required: true, scope: :product
+    parameter :name, 'Product Name', required: true, scope: :product
+    parameter :quantity, 'Quantity', required: true, scope: :product
+    parameter :price, 'Price', required: true, scope: :product
+    product = FactoryGirl.create(:product)
+    name = 'Ventilador Fujitsu'
+    code = 'A1-2099'
+    quantity = 23
+    price = 59.1
+    let(:id) { product.id }
+    let(:raw_post) {  {product: {code: code, name: name, quantity: quantity, price: price, }}.to_json }
+    example_request 'Updates an existing product' do
+      explanation 'First, updates chosen product fields, then returns a response with the product updated data'
+      parsed_response = JSON.parse(response_body)
+      expect(parsed_response.size).to eq(1)
+      product = parsed_response[0]
+      expect(product).to include({
+                                     'name' => name,
+                                     'code' => code,
+                                     'quantity' => quantity,
+                                     'price' => price,
+
+                                 })
+      expect(status).to eq(200)
+    end
   end
 
   post '/v2/products/search' do
