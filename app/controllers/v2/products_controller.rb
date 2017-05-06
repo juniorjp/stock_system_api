@@ -30,6 +30,14 @@ class V2::ProductsController < ApplicationController
     end
   end
 
+  def destroy
+    if @product.destroy
+      render json: [@product], each_serializer: V2::ProductSerializer, root: false
+    else
+      render json: { error: 'Could not delete product, try again later', details: @product.errors.full_messages }, status: :unprocessable_entity
+    end
+  end
+
   private
 
   def product_params
