@@ -21,6 +21,15 @@ class V2::ProductsController < ApplicationController
     render json: [@product], each_serializer: V2::ProductSerializer, root: false
   end
 
+  def update
+    @product.assign_attributes(product_params)
+    if @product.save
+      render json: [@product], each_serializer: V2::ProductSerializer, root: false
+    else
+      render json: { error: 'Could not update product, try again later', details: @product.errors.full_messages }, status: :unprocessable_entity
+    end
+  end
+
   private
 
   def product_params
