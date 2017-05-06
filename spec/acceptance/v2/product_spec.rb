@@ -26,6 +26,17 @@ resource 'Product' do
       })
       expect(status).to eq(200)
     end
+    DatabaseCleaner.clean
+  end
+
+  post '/v2/products/search' do
+    FactoryGirl.create(:product)
+    let(:raw_post) { {}.to_json }
+    example_request 'List products' do
+      parsed_response = JSON.parse(response_body)
+      expect(parsed_response['products'].length).to eq(2)
+      expect(status).to eq(200)
+    end
   end
 
 end
