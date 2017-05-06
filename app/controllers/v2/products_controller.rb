@@ -1,6 +1,8 @@
 class V2::ProductsController < ApplicationController
 
   def index
+    @products = Product.all
+    render json: @products, each_serializer: V2::ProductSerializer, meta: {count: @products.count(:all) }
   end
 
   def create
